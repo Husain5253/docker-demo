@@ -6,9 +6,20 @@ pipeline{
          stage('git checkout'){
              steps{
                   script{
-                        git branch: 'main',
-                        credentialsId: '091dbba5-fd40-4a53-857b-cc138869d8e3', 
-                        url: 'git@github.com:Husain5253/packerRepo.git'
+
+			git branch: 'main', 
+			credentialsId: 'c67e2891-fc00-4f27-b476-4baa9d04b98c', 	
+			url: 'https://github.com/Husain5253/docker-demo'
                   }
             }
-         } 
+         }
+	
+	 stage('Print'){
+              steps{
+                   scrip{
+                               echo "Hello Jenkins"
+	           }  			
+	      }
+         }
+     }
+} 
