@@ -17,6 +17,7 @@ pipeline{
               steps{
                    sh 'echo "Hello World"' 
 		   sh 'sudo docker build -t husain5253/test-image:v1 .'
+		   sh 'sudo docker login -u husain5253 --password Husain@123'
 		   sh 'sudo docker push husain5253/test-image:v1'	     			
 	      }
          }
