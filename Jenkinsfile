@@ -16,9 +16,7 @@ pipeline{
 	
 	 stage('Print'){
               steps{
-                   scrip{
-                               echo "Hello Jenkins"
-	           }  			
+                   sh 'echo "Hello World"'  			
 	      }
          }
      }
