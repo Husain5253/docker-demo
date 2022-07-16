@@ -10,5 +10,12 @@ pipeline{
                }   
                 
            }
+	   stage("Docker Login")
+              steps{
+                   sh'''
+			sudo docker login -u husain5253 --password Husain@123
+                        #sudo docker build -t husain5253/husain-image:v1 .  
+                   '''  
+              }
       }
 }
