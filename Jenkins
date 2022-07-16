@@ -3,11 +3,11 @@ pipeline{
       agent any
       stages{
            stage("Git Clone"){
-               setps{
+               steps{
                       git branch: 'main', 
                       credentialsId: '92c245d4-ac2e-4a10-8702-db8d1141745b', 
                       url: 'https://github.com/Husain5253/docker-demo'    
-                 }   
+               }   
                 
            }
       }
