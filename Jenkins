@@ -3,7 +3,6 @@ pipeline{
       agent any
       stages{
            stage{
-               steps{
                    script{
                         sh'''
                               git branch: 'main', 
@@ -11,7 +10,7 @@ pipeline{
                               url: 'https://github.com/Husain5253/docker-demo'    
                         '''
                     }   
-               } 
+                
            }
       }
 }
