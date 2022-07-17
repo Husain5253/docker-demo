@@ -21,7 +21,7 @@ pipeline{
           }
           stage("Docker Login"){
                steps{
-                     sh  "echo $DOCKERHUB_ID_PSW | sudo docker login -u $DOCKERHUB_ID_USR --password-stdin"  
+                     sh  "echo $DOCKERHUB_ID_P | sudo docker login -u $DOCKERHUB_ID_U --password-stdin"  
               }
            }
           stage("Push image to registry")
