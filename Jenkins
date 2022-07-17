@@ -2,19 +2,19 @@ pipeline{
 
       agent any
       stages{
-           stage("Git Clone"){
+           stage("Git Checkout"){
                steps{
-                      git branch: 'main', 
-                      credentialsId: '92c245d4-ac2e-4a10-8702-db8d1141745b', 
-                      url: 'https://github.com/Husain5253/docker-demo'    
+                      checkout([$class: 'GitSCM', branches: [[name: '*/main']], 
+                      extensions: [], userRemoteConfigs: [[credentialsId: '92c245d4-ac2e-4a10-8702-db8d1141745b',
+                      url: 'https://github.com/Husain5253/docker-demo']]])   
                }   
                 
            }
-	   stage("Docker Login"){
-               steps{
-                     sh  "sudo docker login -u husain5253 --password Husain@123"  
-               }
-           }
+	   //stage("Docker Login"){
+             //  steps{
+               //      sh  "sudo docker login -u husain5253 --password Husain@123"  
+             // }
+          // }
 	   stage("Docker build and tagging")
            {
                steps{
