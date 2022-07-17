@@ -16,18 +16,18 @@ pipeline{
 	   stage("Docker build and tagging")
            {
                steps{
-                    sh "sudo docker build -t husain5253/hey-image1:v1 ."
+                    sh "sudo docker build -t husain5253/hey-image1:v2 ."
                }
           }
           stage("Docker Login"){
                steps{
-                     sh  "echo $DOCKERHUB_ID_P | sudo docker login -u $DOCKERHUB_ID_U --password-stdin"  
+                     sh  "echo $DOCKERHUB_ID_PSW | sudo docker login -u $DOCKERHUB_ID_USR --password-stdin"  
               }
            }
           stage("Push image to registry")
           {
               steps{
-                  sh "sudo docker push husain5253/hey-image1:v1"
+                  sh "sudo docker push husain5253/hey-image1:v2"
               }
           }
       }
