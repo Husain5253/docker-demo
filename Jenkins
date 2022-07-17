@@ -1,6 +1,9 @@
 pipeline{
 
       agent any
+      environment{
+               DOCKERHUB_CREDENTIALS=credentials('dockerhub_id')
+      }
       stages{
            stage("Git Checkout"){
                steps{
@@ -10,21 +13,21 @@ pipeline{
                }   
                 
            }
-	   //stage("Docker Login"){
-             //  steps{
-               //      sh  "sudo docker login -u husain5253 --password Husain@123"  
-             // }
-          // }
 	   stage("Docker build and tagging")
            {
                steps{
-                    sh "sudo docker build -t husain5253/husain-image:v1 ."
+                    sh "sudo docker build -t husain5253/husain-image1:v1 ."
                }
           }
+          stage("Docker Login"){
+               steps{
+                     sh  "echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"  
+              }
+           }
           stage("Push image to registry")
           {
               steps{
-                  sh "sudo docker push husain5253/husain-image:v1"
+                  sh "sudo docker push husain5253/husain-image1:v1"
               }
           }
       }
