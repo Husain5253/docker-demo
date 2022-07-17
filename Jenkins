@@ -12,19 +12,13 @@ pipeline{
            }
 	   stage("Docker Login"){
                steps{
-                   script{
-                       sh'''
-		             sudo docker login -u husain5253 --password Husain@123 
-                       '''  
-                   }
+                     sh  "sudo docker login -u husain5253 --password Husain@123"  
                }
            }
 	   stage("Docker build and tagging")
            {
                steps{
-                    sh'''
-                         sudo docker build -t husain5253/husain-image:v1 .
-                    '''
+                    sh "sudo docker build -t husain5253/husain-image:v1 ."
                }
           }
       }
