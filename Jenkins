@@ -21,5 +21,11 @@ pipeline{
                     sh "sudo docker build -t husain5253/husain-image:v1 ."
                }
           }
+          stage("Push image to registry")
+          {
+              steps{
+                  sh "sudo docker push husain5253/husain-image:v1"
+              }
+          }
       }
 }
