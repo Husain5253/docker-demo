@@ -2,6 +2,7 @@ pipeline{
 
       agent any
       environment{
+               DOCKER_IMAGE=husain5253/my-image:v1
                DOCKERHUB_ID=credentials('dockerhub_id')
       }
       stages{
@@ -16,18 +17,23 @@ pipeline{
 	   stage("Docker build and tagging")
            {
                steps{
-                    sh "sudo docker build -t husain5253/hey-image1:v2 ."
+                    sh "sudo docker build -t $DOCKER_IMAGE ."
                }
           }
           stage("Docker Login"){
                steps{
                      sh  "echo $DOCKERHUB_ID_PSW | sudo docker login -u $DOCKERHUB_ID_USR --password-stdin"  
               }
-           }
-          stage("Push image to registry")
+          }
+	  stage("Scanning docker image"){
+              steps{
+                   sh "sudo trivy image --severity HIGH,CRITICAL $DOCKER_IMAGE"
+              }
+          }
+          stage("Pushing docker image to registry")
           {
               steps{
-                  sh "sudo docker push husain5253/hey-image1:v2"
+                  sh "sudo docker push $DOCKER_IMAGE"
               }
           }
       }
