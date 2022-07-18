@@ -27,7 +27,7 @@ pipeline{
           }
 	  stage("Scanning docker image"){
               steps{
-                   sh "sudo trivy image --severity HIGH,CRITICAL $DOCKER_IMAGE"
+                   sh "sudo trivy image $DOCKER_IMAGE"
               }
           }
           stage("Pushing docker image to registry")
