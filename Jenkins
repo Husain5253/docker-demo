@@ -2,8 +2,8 @@ pipeline{
 
       agent any
       environment{
-               DOCKER_IMAGE="subh9975/simple-app:v2.0.0"
-               DOCKERHUB_ID=credentials('shubham_dockerid')
+               DOCKER_IMAGE="husain5253/demo-image:v1"
+               DOCKERHUB_ID=credentials('dockerhub_id')
       }
       stages{
            stage("Git Checkout"){
