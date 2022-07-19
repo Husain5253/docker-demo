@@ -2,7 +2,7 @@ pipeline{
 
       agent any
       environment{
-               DOCKER_IMAGE="husain5253/demo-image:v2"
+               DOCKER_IMAGE="husain5253/demo-image:v3"
                DOCKERHUB_ID=credentials('dockerhub_id')
       }
       stages{
